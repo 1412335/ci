@@ -33,5 +33,3 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 assets/AdminLTE/pages
 assets/AdminLTE/documentation
-
-application/views/templates_c/*

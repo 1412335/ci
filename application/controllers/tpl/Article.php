@@ -41,8 +41,8 @@ class Article extends CI_Controller
 		foreach ($articles as $item)
 		{
 			$articles_data_table[] = $item['article_id'];
-			$articles_data_table[] = "<a href=".base_url()."index.php/tpl/article/preview/$item[article_id]>$item[article_name]</a>";
-			$articles_data_table[] = "<a href=".base_url()."index.php/tpl/category/cat/$item[cat_id]>$item[cat_name]</a>";
+			$articles_data_table[] = "<a href=".base_url()."index.php/tpl/article/$item[article_id]>$item[article_name]</a>";
+			$articles_data_table[] = "<a href=".base_url()."index.php/tpl/category/$item[cat_id]>$item[cat_name]</a>";
 			$articles_data_table[] = $item['article_des'];
 			$articles_data_table[] = "<a href=".base_url()."index.php/tpl/article/edit/$item[article_id] role='button' class='btn btn-flat btn-primary btn-sm'><i class='fa fa-edit'></i></a>";
 			$articles_data_table[] = "<a href=".base_url()."index.php/tpl/article/delete/$item[article_id] role='button' class='btn btn-flat btn-danger btn-sm'><i class='fa fa-remove'></i></a>";

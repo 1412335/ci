@@ -36,6 +36,7 @@ class Article_model extends CI_Model
 	public function get_article_by_id($article_id)
 	{
 		$this->article_id = $article_id;
+		$this->db->join('category', 'cat_id = article_cat_id');
 		$this->db->where('article_id', $article_id);
 		return $this->db->get($this->table)->row_array();
 	}

@@ -15,6 +15,7 @@
 				<div class="box-body">
 					<div class="article">
 						<div class="title"><h2>{$article.article_name}</h2></div>
+						<div class="category">Category: <a href="{$base_url}index.php/tpl/category/{$article.cat_id}">{$article.cat_name}</a></div>
 						<div class="des"><b>{$article.article_des}</b></div>
 						<div class="image">
 							<img src="{$base_url}uploads/{$article.article_thumbnail}" height="250" alt="Article Image">

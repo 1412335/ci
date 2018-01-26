@@ -18,12 +18,18 @@
 					<div class="row ">
 						<div class="col-md-12">
 							<div class="cat-detail">
-								<div class="cat-id">ID: {$cat.cat_id}</div>
-								<div class="cat-name">Name: {$cat.cat_name}</div>
-								<div class="cat-des">Description: {$cat.cat_des}</div>
-								{if $cat_parent}
-									<div class="cat-parent">Category Parent: <a href="{$base_url}index.php/tpl/category/preview/{$cat.cat_parent_id}">{$cat_parent.cat_name}</a></div>
-								{/if}
+								<dl class="dl-horizontal">
+									<dt>ID</dt>
+									<dd>{$cat.cat_id}</dd>
+									<dt>NAME</dt>
+									<dd>{$cat.cat_name|capitalize}</dd>
+									{if $cat_parent}
+									<dt>CATEGORY PARENT</dt>
+									<dd><a href="{$base_url}index.php/tpl/category/{$cat.cat_parent_id}">{$cat_parent.cat_name}</a></dd>
+									{/if}
+									<dt>DESCRIPTION</dt>
+									<dd>{$cat.cat_des}</dd>
+								</dl>
 							</div>
 						</div>
 					</div>

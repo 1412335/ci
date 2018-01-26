@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 03:56:36
+<?php /* Smarty version 2.6.31, created on 2018-01-26 06:54:30
          compiled from article/preview.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "./partials/head.tpl", 'smarty_include_vars' => array('title' => 'Preview Article')));
@@ -31,6 +31,10 @@ unset($_smarty_tpl_vars);
 					<div class="article">
 						<div class="title"><h2><?php echo $this->_tpl_vars['article']['article_name']; ?>
 </h2></div>
+						<div class="category"><a href="<?php echo $this->_tpl_vars['base_url']; ?>
+index.php/tpl/category/<?php echo $this->_tpl_vars['article']['cat_id']; ?>
+"><?php echo $this->_tpl_vars['article']['cat_name']; ?>
+</a></div>
 						<div class="des"><b><?php echo $this->_tpl_vars['article']['article_des']; ?>
 </b></div>
 						<div class="image">
