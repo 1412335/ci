@@ -66,7 +66,7 @@
 					CKEDITOR.replace('cat_des');
 				}
 
-				$('img#article_preview_img').click(function() {
+				$('img.preview-img').click(function() {
 					$('input[type=file]').trigger('click');
 				});
 			});

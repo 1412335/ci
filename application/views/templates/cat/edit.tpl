@@ -1,4 +1,4 @@
-{include file="./partials/head.tpl" title="New Category"}
+{include file="./partials/head.tpl" title="Edit Category"}
 {include file="./partials/topbar.tpl"}
 {include file="./partials/sidebar.tpl"}
 
@@ -16,8 +16,7 @@
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="col-md-12">
-						<form action={$base_url}index.php/tpl/category/edit/{$cat.cat_id} method="post" role="form">
-							<legend>New Category</legend>
+						<form action={$base_url}tpl/category/edit/{$cat.cat_id} method="post" role="form">
 							{if $errors}
 								<div class='alert alert-danger alert-dismissable'>
 									<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
@@ -40,10 +39,21 @@
 								</select>
 							</div>
 							<div class="form-group">
+								<label for="cat_status">Category Status</label>
+								<select name="cat_status" id="cat_status" class="form-control select2">
+									{html_options options="$cats_status" selected=$cat.cat_status}
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="cat_thumbnail">Image</label>
+								<img class="preview-img" src="{$base_url}uploads/categories/{$cat.cat_thumbnail}" height="250" alt="Cat Image">
+								<input type="file" class="form-control hidden" id="cat_thumbnail" name="cat_thumbnail">
+							</div>
+							<div class="form-group">
 								<label for="cat_des">Description</label>
 								<textarea id="cat_des" name="cat_des" rows="10" cols="80">{$cat.cat_des}</textarea>
 							</div>
-							<button type="submit" class="btn btn-primary" name="edit">Save</button>
+							<button type="submit" class="btn btn-primary btn-flat" name="edit">Save</button>
 						</form>
 					</div>
 				</div>

@@ -42,7 +42,7 @@ class Category_model extends CI_Model
 
 	public function get_list_cats($type = 'object')
 	{
-		$this->db->select('cat.cat_id, cat.cat_name, cat.cat_des, cat.cat_parent_id, cat1.cat_name as cat_parent_name');
+		$this->db->select('cat.cat_id, cat.cat_name, cat.cat_des, cat.cat_status, cat.cat_created_date, cat.cat_modified_date, cat.cat_parent_id, cat1.cat_name as cat_parent_name');
 		$this->db->join($this->table .' AS cat1', 'cat1.cat_id = cat.cat_parent_id', 'LEFT');
 		return $this->db->get($this->table . ' AS cat')->result($type);
 	}
@@ -72,15 +72,16 @@ class Category_model extends CI_Model
 		return $this->db->insert($this->table, $data);
 	}
 
-	public function delete()
+	public function delete($cat_id)
 	{
-		$this->db->where('cat_parent_id', $this->cat_id);
-		$this->db->update($this->table, array('cat_parent_id' => 0));
-
-		$this->db->where('article_cat_id', $this->cat_id);
-		$this->db->update('article', array('article_cat_id' => 0));
-
-		return $this->db->delete($this->table, array('cat_id' => $this->cat_id));
+//		$this->db->where('cat_parent_id', $this->cat_id);
+//		$this->db->update($this->table, array('cat_parent_id' => 0));
+//
+//		$this->db->where('article_cat_id', $this->cat_id);
+//		$this->db->update('article', array('article_cat_id' => 0));
+//
+//		return $this->db->delete($this->table, array('cat_id' => $this->cat_id));
+		return $this->db->update($this->table, array('cat_status' => 0), array('cat_id' => $cat_id));
 	}
 
 	public function update($data = array())

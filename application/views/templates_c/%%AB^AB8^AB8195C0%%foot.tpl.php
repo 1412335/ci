@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 07:40:54
+<?php /* Smarty version 2.6.31, created on 2018-01-29 06:54:23
          compiled from ./partials/foot.tpl */ ?>
 		</div><!-- /.content-wrapper -->
 
@@ -86,7 +86,7 @@ assets/AdminLTE/bower_components/ckeditor/ckeditor.js"></script>
 					CKEDITOR.replace(\'cat_des\');
 				}
 
-				$(\'img#article_preview_img\').click(function() {
+				$(\'img.preview-img\').click(function() {
 					$(\'input[type=file]\').trigger(\'click\');
 				});
 			});

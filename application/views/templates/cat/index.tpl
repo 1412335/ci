@@ -33,7 +33,11 @@
 									<th>Name</th>
 									<th>Parent</th>
 									<th>Des</th>
-									<th>Action</th>
+									<th>Status</th>
+									<th>Created date</th>
+									<th>Modified date</th>
+									<th>Edit</th>
+									<th>Delete</th>
 								</tr>
 								</thead>
 								<tbody>

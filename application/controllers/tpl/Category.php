@@ -10,11 +10,26 @@ class Category extends  CI_Controller
 {
 	protected $cats;
 
+	protected $cats_status = array(
+		0	=> 'unpublic',
+		1	=> 'public'
+	);
+
+	public $config = array(
+		'max_size'	=> '100',
+		'max_width'	=> '1024',
+		'max_height'	=> '1024',
+		'allowed_types'	=> 'png|jpg|jpeg',
+		'upload_path'	=> './uploads/categories/'
+	);
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('category_model');
 		$this->load->library('form_validation');
+		$this->load->library('upload', $this->config);
+
 		$this->smarty->assign('base_url', base_url());
 
 		$this->cats = $this->category_model->get_list_cats('array');
@@ -25,6 +40,7 @@ class Category extends  CI_Controller
 			$cats_option[$item['cat_id']] = $item['cat_name'];
 		}
 		$this->smarty->assign('cats', $cats_option);
+		$this->smarty->assign('cats_status', $this->cats_status);
 	}
 
 	public function index()
@@ -61,13 +77,15 @@ class Category extends  CI_Controller
 				$html .= "<tr id=$item[cat_id]>
 							<td>$i</td>
 							<td>$item[cat_id]</td>
-							<td>{$str}<a href=".base_url()."index.php/tpl/category/$item[cat_id]>$item[cat_name]</a></td>
-							<td><a href=".base_url()."index.php/tpl/category/$item[cat_parent_id]>$item[cat_parent_name]</a></td>
-							<td>$item[cat_des]</td>
-							<td>
-								<a role='button' href=".base_url()."index.php/tpl/category/edit/$item[cat_id] class='btn btn-primary btn-flat btn-sm'>Edit</a>
-								<a role='button' href=".base_url()."index.php/tpl/category/delete/$item[cat_id] class='btn btn-danger btn-flat btn-sm'>Delete</a>
-							</td>
+							<td>{$str}<a href=".base_url()."tpl/category/$item[cat_id]>$item[cat_name]</a></td>
+							<td><a href=".base_url()."tpl/category/$item[cat_parent_id]>$item[cat_parent_name]</a></td>
+							<td style='max-width: 250px'>$item[cat_des]</td>
+							<td>".$this->_cat_status($item['cat_status'])."</td>
+							<td>$item[cat_created_date]</td>
+							<td>$item[cat_modified_date]</td>
+							<td></td>
+							<td><a role='button' href=".base_url()."tpl/category/$item[cat_id]/edit class='btn btn-primary btn-flat btn-sm'><i class='fa fa-edit'></i></a></td>
+							<td><a role='button' href=".base_url()."tpl/category/$item[cat_id]/delete class='btn btn-danger btn-flat btn-sm'><i class='fa fa-remove'></i></a></td>
 						</tr>";
 				$str .= '|---';
 				$html .= $this->show_cats($cats, $item['cat_id'], $str, $i);
@@ -75,6 +93,17 @@ class Category extends  CI_Controller
 			}
 		}
 		return $html;
+	}
+
+	private function _cat_status($status)
+	{
+		switch ($status)
+		{
+			case 1:
+				return 'public';
+			default:
+				return 'unpublic';
+		}
 	}
 
 	public function group_cat($cats, $parent_id = 0, $cats_group_data = NULL)
@@ -110,6 +139,8 @@ class Category extends  CI_Controller
 	public function add()
 	{
 		$this->form_validation->set_rules('cat_name', 'Category Name', 'required|trim|min_length[3]|is_unique[category.cat_name]');
+		$this->form_validation->set_rules('cat_status', 'Category Status', 'required');
+
 		if($this->form_validation->run() == false)
 		{
 			$this->smarty->assign('errors', validation_errors());
@@ -117,15 +148,25 @@ class Category extends  CI_Controller
 		}
 		else
 		{
-			$new_cat = array(
-				'cat_name'	=> $_POST['cat_name'],
-				'cat_des'	=> $_POST['cat_des'],
-				'cat_parent_id'	=> $_POST['cat_parent_id'],
-			);
-
-			$this->category_model->insert($new_cat);
-			$this->session->set_flashdata('msg', 'Added new category successfully.');
-			redirect(base_url().'index.php/tpl/category');
+			if($this->upload->do_upload('cat_thumbnail'))
+			{
+				$data = $this->upload->data();
+				$new_cat = array(
+					'cat_name'	=> $_POST['cat_name'],
+					'cat_des'	=> $_POST['cat_des'],
+					'cat_parent_id'	=> $_POST['cat_parent_id'],
+					'cat_status'	=> $_POST['cat_status'],
+					'cat_thumbnail'	=> $data['file_name']
+				);
+				$this->category_model->insert($new_cat);
+				$this->session->set_flashdata('msg', 'Added new category successfully.');
+				redirect(base_url().'tpl/category');
+			}
+			else
+			{
+				$this->smarty->assign('errors', $this->upload->display_errors());
+				$this->smarty->view('cat/add.tpl');
+			}
 		}
 	}
 
@@ -144,11 +185,12 @@ class Category extends  CI_Controller
 		$cat = $this->category_model->get_cat_by('cat_id', $cat_id);
 		if(empty($cat))
 		{
-			redirect(base_url().'index.php/tpl/category');
+			redirect(base_url().'tpl/category');
 		}
 		else
 		{
 			$this->form_validation->set_rules('cat_name', 'Category Name', 'required|trim|min_length[3]|callback_check_cat_name['.$cat_id.']');
+			$this->form_validation->set_rules('cat_status', 'Category Status', 'required');
 
 			if($this->form_validation->run() == FALSE)
 			{
@@ -161,15 +203,36 @@ class Category extends  CI_Controller
 				$update = array(
 					'cat_name' => $_POST['cat_name'],
 					'cat_parent_id' => $_POST['cat_parent_id'],
-					'cat_des' => $_POST['cat_des']
+					'cat_des' => $_POST['cat_des'],
+					'cat_status' => $_POST['cat_status']
 				);
+				if(isset($_FILES['cat_thumbnail']) && $_FILES['cat_thumbnail']['size'] > 0)
+				{
+					if($this->upload->do_upload('cat_thumbnail'))
+					{
+						$data = $this->upload->data();
+						$update['cat_thumbnail'] = $data['file_name'];
+					}
+					else
+					{
+						$this->smarty->assign('errors', $this->upload->display_errors());
+						$this->smarty->view('cat/edit.tpl');
+						return;
+					}
+				}
 				$this->category_model->set_id($cat_id);
 				$this->category_model->update($update);
-				$this->session->set_flashdata('msg', "Updated category successfully.");
-				redirect(base_url().'index.php/tpl/category');
+				$this->session->set_flashdata('msg', "Updated category $cat[cat_name] successfully.");
+				redirect(base_url().'tpl/category');
 			}
 		}
 	}
+
+	public function delete($cat_id = '')
+	{
+		$this->category_model->delete($cat_id);
+		$this->session->set_flashdata('msg', "Deleted category successfully.");
+		redirect(base_url().'tpl/category');}
 
 	public function preview($cat_id = '')
 	{
@@ -186,19 +249,20 @@ class Category extends  CI_Controller
 			foreach ($articles as $item)
 			{
 				$articles_data_table[] = $item['article_id'];
-				$articles_data_table[] = "<a href=".base_url()."index.php/tpl/article/$item[article_id]>$item[article_name]</a>";
+				$articles_data_table[] = "<a href=".base_url()."tpl/article/$item[article_id]>$item[article_name]</a>";
 				$articles_data_table[] = $item['article_des'];
-				$articles_data_table[] = "<a href=".base_url()."index.php/tpl/article/edit/$item[article_id] role='button' class='btn btn-flat btn-primary btn-sm'><i class='fa fa-edit'></i></a>";
-				$articles_data_table[] = "<a href=".base_url()."index.php/tpl/article/delete/$item[article_id] role='button' class='btn btn-flat btn-danger btn-sm'><i class='fa fa-remove'></i></a>";
+				$articles_data_table[] = "<a href=".base_url()."tpl/article/edit/$item[article_id] role='button' class='btn btn-flat btn-primary btn-sm'><i class='fa fa-edit'></i></a>";
+				$articles_data_table[] = "<a href=".base_url()."tpl/article/delete/$item[article_id] role='button' class='btn btn-flat btn-danger btn-sm'><i class='fa fa-remove'></i></a>";
 			}
 			$this->smarty->assign('articles', $articles_data_table);
 			$this->smarty->assign('table_attr', 'class="table table-bordered table-striped" id="example1"');
+			$this->smarty->assign('td_attr', 'style="max-width: 250px;"');
 
 			$this->smarty->view('cat/preview.tpl');
 		}
 		else
 		{
-			redirect(base_url().'index.php/tpl/category');
+			redirect(base_url().'tpl/category');
 		}
 	}
 

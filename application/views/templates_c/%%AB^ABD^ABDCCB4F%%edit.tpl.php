@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 07:31:00
+<?php /* Smarty version 2.6.31, created on 2018-01-29 06:55:47
          compiled from cat/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'cat/edit.tpl', 39, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'cat/edit.tpl', 38, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "./partials/head.tpl", 'smarty_include_vars' => array('title' => 'New Category')));
+$this->_smarty_include(array('smarty_include_tpl_file' => "./partials/head.tpl", 'smarty_include_vars' => array('title' => 'Edit Category')));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
@@ -34,9 +34,8 @@ unset($_smarty_tpl_vars);
 				<div class="box-body">
 					<div class="col-md-12">
 						<form action=<?php echo $this->_tpl_vars['base_url']; ?>
-index.php/tpl/category/edit/<?php echo $this->_tpl_vars['cat']['cat_id']; ?>
+tpl/category/edit/<?php echo $this->_tpl_vars['cat']['cat_id']; ?>
  method="post" role="form">
-							<legend>New Category</legend>
 							<?php if ($this->_tpl_vars['errors']): ?>
 								<div class='alert alert-danger alert-dismissable'>
 									<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
@@ -61,6 +60,20 @@ index.php/tpl/category/edit/<?php echo $this->_tpl_vars['cat']['cat_id']; ?>
 									<?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['cats'],'selected' => $this->_tpl_vars['cat']['cat_parent_id']), $this);?>
 
 								</select>
+							</div>
+							<div class="form-group">
+								<label for="cat_status">Category Status</label>
+								<select name="cat_status" id="cat_status" class="form-control select2">
+									<?php echo smarty_function_html_options(array('options' => ($this->_tpl_vars['cats_status']),'selected' => $this->_tpl_vars['cat']['cat_status']), $this);?>
+
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="cat_thumbnail">Image</label>
+								<img class="preview-img" src="<?php echo $this->_tpl_vars['base_url']; ?>
+uploads/categories/<?php echo $this->_tpl_vars['cat']['cat_thumbnail']; ?>
+" height="250" alt="Cat Image">
+								<input type="file" class="form-control hidden" id="cat_thumbnail" name="cat_thumbnail">
 							</div>
 							<div class="form-group">
 								<label for="cat_des">Description</label>

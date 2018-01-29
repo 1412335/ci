@@ -38,7 +38,7 @@
 							</div>
 							<div class="form-group">
 								<label for="article_image">Image</label>
-								<img id="article_preview_img" src="{$base_url}uploads/{$article.article_thumbnail}" width="180" height="100" alt="Article Image">
+								<img class="preview-img" id="article_preview_img" src="{$base_url}uploads/{$article.article_thumbnail}" width="180" height="100" alt="Article Image">
 								<input type="file" class="hidden" id="article_image" name="article_image">
 							</div>
 							<div class="form-group">

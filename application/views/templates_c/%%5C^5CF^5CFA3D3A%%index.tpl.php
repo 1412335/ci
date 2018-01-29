@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 04:44:51
+<?php /* Smarty version 2.6.31, created on 2018-01-29 05:35:10
          compiled from cat/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "./partials/head.tpl", 'smarty_include_vars' => array('title' => 'Home')));
@@ -48,7 +48,11 @@ unset($_smarty_tpl_vars);
 									<th>Name</th>
 									<th>Parent</th>
 									<th>Des</th>
-									<th>Action</th>
+									<th>Status</th>
+									<th>Created date</th>
+									<th>Modified date</th>
+									<th>Edit</th>
+									<th>Delete</th>
 								</tr>
 								</thead>
 								<tbody>

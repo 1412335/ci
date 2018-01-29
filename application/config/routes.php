@@ -53,8 +53,8 @@ $route['default_controller'] = 'tpl/category';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-//$route['tpl/category/(:num)/edit'] = 'tpl/category/edit/$1';
-//$route['tpl/category/(:num)/delete'] = 'tpl/category/delete/$1';
+$route['tpl/category/(:num)/edit'] = 'tpl/category/edit/$1';
+$route['tpl/category/(:num)/delete'] = 'tpl/category/delete/$1';
 $route['tpl/category/(:num)'] = 'tpl/category/preview/$1';
 
 //$route['tpl/article/(:num)/edit'] = 'tpl/article/edit/$1';

@@ -36,7 +36,7 @@
 					<hr>
 					<div class="row">
 						<div class="col-md-12">
-							{html_table cols="ID,Title,Des,Edit,Delete" table_attr=$table_attr loop=$articles}
+							{html_table cols="ID,Title,Des,Edit,Delete" table_attr=$table_attr td_attr=$td_attr loop=$articles}
 						</div>
 					</div>
 				</div>
