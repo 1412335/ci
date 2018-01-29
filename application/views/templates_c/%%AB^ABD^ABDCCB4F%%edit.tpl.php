@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-24 12:51:21
+<?php /* Smarty version 2.6.31, created on 2018-01-26 07:31:00
          compiled from cat/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'cat/edit.tpl', 39, false),)), $this); ?>
@@ -56,15 +56,15 @@ index.php/tpl/category/edit/<?php echo $this->_tpl_vars['cat']['cat_id']; ?>
 							</div>
 							<div class="form-group">
 								<label for="cat_parent_id">Category Parent</label>
-								<select name="cat_parent_id" id="cat_parent_id" class="form-control">
+								<select name="cat_parent_id" id="cat_parent_id" class="form-control select2" style="width: 100%;">
 									<option value='0'>-- Select category parent --</option>
-									<?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['cats'],'selected' => $this->_tpl_vars['cat']['cat_id']), $this);?>
+									<?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['cats'],'selected' => $this->_tpl_vars['cat']['cat_parent_id']), $this);?>
 
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="cat_des">Description</label>
-								<textarea name="cat_des" class="form-control" id="cat_des" cols="30" rows="5" placeholder="Write something about category.."><?php echo $this->_tpl_vars['cat']['cat_des']; ?>
+								<textarea id="cat_des" name="cat_des" rows="10" cols="80"><?php echo $this->_tpl_vars['cat']['cat_des']; ?>
 </textarea>
 							</div>
 							<button type="submit" class="btn btn-primary" name="edit">Save</button>

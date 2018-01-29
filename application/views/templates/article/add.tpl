@@ -13,7 +13,7 @@
 					</div>
 				</div>
 				<div class="box-body">
-					<div class="col-md-8 col-md-offset-2">
+					<div class="col-md-12">
 						<form action={$base_url}index.php/tpl/article/add method="post" enctype="multipart/form-data" role="form">
 							{if $errors}
 								<div class='alert alert-danger'>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 03:23:02
+<?php /* Smarty version 2.6.31, created on 2018-01-26 07:41:36
          compiled from article/add.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'article/add.tpl', 32, false),)), $this); ?>
@@ -29,7 +29,7 @@ unset($_smarty_tpl_vars);
 					</div>
 				</div>
 				<div class="box-body">
-					<div class="col-md-8 col-md-offset-2">
+					<div class="col-md-12">
 						<form action=<?php echo $this->_tpl_vars['base_url']; ?>
 index.php/tpl/article/add method="post" enctype="multipart/form-data" role="form">
 							<?php if ($this->_tpl_vars['errors']): ?>

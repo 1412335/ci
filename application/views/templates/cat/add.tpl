@@ -30,7 +30,7 @@
 						</div>
 						<div class="form-group">
 							<label for="cat_parent_id">Category Parent</label>
-							<select name="cat_parent_id" id="cat_parent_id" class="form-control">
+							<select name="cat_parent_id" id="cat_parent_id" class="form-control select2">
 								<option value='0'>-- Select category parent --</option>
 								{html_options options="$cats"}
 							</select>
@@ -39,7 +39,7 @@
 							<label for="cat_des">Description</label>
 							<textarea name="cat_des" class="form-control" id="cat_des" cols="30" rows="5" placeholder="Write something about category.."></textarea>
 						</div>
-						<button type="submit" class="btn btn-primary" name="add">Save</button>
+						<button type="submit" class="btn btn-primary btn-flat" name="add">Save</button>
 						</form>
 					</div>
 				</div>

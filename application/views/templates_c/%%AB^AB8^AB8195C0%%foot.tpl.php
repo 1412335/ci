@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 03:20:53
+<?php /* Smarty version 2.6.31, created on 2018-01-26 07:40:54
          compiled from ./partials/foot.tpl */ ?>
 		</div><!-- /.content-wrapper -->
 
@@ -74,9 +74,17 @@ assets/AdminLTE/bower_components/ckeditor/ckeditor.js"></script>
 			<?php echo '
 			$(function() {
 				$(\'#example1\').DataTable();
-				CKEDITOR.replace(\'article_content\');
-				CKEDITOR.replace(\'article_des\');
 				$(\'.select2\').select2();
+
+				if($(\'textarea#article_content\').length)
+				{
+					CKEDITOR.replace(\'article_content\');
+					CKEDITOR.replace(\'article_des\');
+				}
+				if($(\'textarea#cat_des\').length)
+				{
+					CKEDITOR.replace(\'cat_des\');
+				}
 
 				$(\'img#article_preview_img\').click(function() {
 					$(\'input[type=file]\').trigger(\'click\');

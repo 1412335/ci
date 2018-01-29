@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-24 12:40:44
+<?php /* Smarty version 2.6.31, created on 2018-01-26 07:32:45
          compiled from cat/add.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'cat/add.tpl', 35, false),)), $this); ?>
@@ -48,7 +48,7 @@ index.php/tpl/category/add method="post" role="form">
 						</div>
 						<div class="form-group">
 							<label for="cat_parent_id">Category Parent</label>
-							<select name="cat_parent_id" id="cat_parent_id" class="form-control">
+							<select name="cat_parent_id" id="cat_parent_id" class="form-control select2">
 								<option value='0'>-- Select category parent --</option>
 								<?php echo smarty_function_html_options(array('options' => ($this->_tpl_vars['cats'])), $this);?>
 

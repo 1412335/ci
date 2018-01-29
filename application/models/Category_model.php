@@ -87,4 +87,20 @@ class Category_model extends CI_Model
 	{
 		return $this->db->update($this->table, $data, array('cat_id' => $this->cat_id));
 	}
+
+	//	prevent sql injection
+	//	db->escape
+	public function get_cat_by_name_escape($cat_name)
+	{
+		$sql = "SELECT * FROM " . $this->table . " WHERE cat_name = " . $this->db->escape($cat_name);
+		var_dump($sql);
+		return $this->db->query($sql)->row_array();
+	}
+
+	//	query binding
+	public function get_cat_by_name_binding($cat_name)
+	{
+		$sql = "SELECT * FROM " . $this->table . " WHERE cat_name=?";
+		return $this->db->query($sql, array($cat_name))->row_array();
+	}
 }

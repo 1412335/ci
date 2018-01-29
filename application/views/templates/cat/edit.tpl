@@ -34,14 +34,14 @@
 							</div>
 							<div class="form-group">
 								<label for="cat_parent_id">Category Parent</label>
-								<select name="cat_parent_id" id="cat_parent_id" class="form-control">
+								<select name="cat_parent_id" id="cat_parent_id" class="form-control select2" style="width: 100%;">
 									<option value='0'>-- Select category parent --</option>
-									{html_options options=$cats selected=$cat.cat_id}
+									{html_options options=$cats selected=$cat.cat_parent_id}
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="cat_des">Description</label>
-								<textarea name="cat_des" class="form-control" id="cat_des" cols="30" rows="5" placeholder="Write something about category..">{$cat.cat_des}</textarea>
+								<textarea id="cat_des" name="cat_des" rows="10" cols="80">{$cat.cat_des}</textarea>
 							</div>
 							<button type="submit" class="btn btn-primary" name="edit">Save</button>
 						</form>

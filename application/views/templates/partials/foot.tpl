@@ -54,9 +54,17 @@
 			{literal}
 			$(function() {
 				$('#example1').DataTable();
-				CKEDITOR.replace('article_content');
-				CKEDITOR.replace('article_des');
 				$('.select2').select2();
+
+				if($('textarea#article_content').length)
+				{
+					CKEDITOR.replace('article_content');
+					CKEDITOR.replace('article_des');
+				}
+				if($('textarea#cat_des').length)
+				{
+					CKEDITOR.replace('cat_des');
+				}
 
 				$('img#article_preview_img').click(function() {
 					$('input[type=file]').trigger('click');

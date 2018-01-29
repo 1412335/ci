@@ -77,6 +77,36 @@ class Category extends  CI_Controller
 		return $html;
 	}
 
+	public function group_cat($cats, $parent_id = 0, $cats_group_data = NULL)
+	{
+		$cats_group = $cats_group_data;
+		$cats_name_group = array();
+		foreach ($cats as $key => $item)
+		{
+			if($item['cat_id'] == $parent_id OR $item['cat_parent_id'] == 0)
+			{
+				$cats_name_group[$item['cat_id']] = $item['cat_name'];
+				unset($cats[$key]);
+			}
+		}
+		while( ! empty($cats_name_group))
+		{
+			$group = array_splice($cats_name_group, 0, 1);
+			foreach ($group as $id => $name)
+			{
+				foreach ($cats as $item)
+				{
+					if ($item['cat_parent_id'] == $id)
+					{
+						$cats_group[$name][] = $item;
+						$this->group_cat($cats, $id, $cats_group[$name]);
+					}
+				}
+			}
+		}
+		return $cats_group;
+	}
+
 	public function add()
 	{
 		$this->form_validation->set_rules('cat_name', 'Category Name', 'required|trim|min_length[3]|is_unique[category.cat_name]');
@@ -171,4 +201,17 @@ class Category extends  CI_Controller
 			redirect(base_url().'index.php/tpl/category');
 		}
 	}
+
+	public function escape($type = 1, $cat_name = '')
+	{
+		if($type == 1)
+		{
+			var_dump($this->category_model->get_cat_by_name_escape($cat_name));
+		}
+		else
+		{
+			var_dump($this->category_model->get_cat_by_name_binding($cat_name));
+		}
+	}
+
 }
