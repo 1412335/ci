@@ -157,8 +157,7 @@ class Article extends CI_Controller
 						$update['article_thumbnail'] = $file_data['file_name'];
 					}
 				}
-				$this->article_model->set_id($article_id);
-				$this->article_model->update($update);
+				$this->article_model->update($article_id, $update);
 				$this->session->set_flashdata('msg', "Updated article successfully.");
 				redirect(base_url() . 'tpl/article');
 			}

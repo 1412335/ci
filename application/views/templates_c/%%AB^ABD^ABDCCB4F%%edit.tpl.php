@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-29 07:23:47
+<?php /* Smarty version 2.6.31, created on 2018-01-29 12:20:49
          compiled from cat/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'cat/edit.tpl', 38, false),)), $this); ?>
@@ -46,7 +46,7 @@ tpl/category/edit/<?php echo $this->_tpl_vars['cat']['cat_id']; ?>
 							<div class="form-group">
 								<label for="cat_id">Category ID</label>
 								<input type="text" class="form-control" name="cat_id" value="<?php echo $this->_tpl_vars['cat']['cat_id']; ?>
-" id="cat_id" placeholder="Enter Category Name">
+" id="cat_id" disabled>
 							</div>
 							<div class="form-group">
 								<label for="cat_name">Category Name</label>

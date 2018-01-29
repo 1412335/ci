@@ -173,7 +173,7 @@ class Category extends  CI_Controller
 
 	public function check_cat_name($cat_name, $cat_id)
 	{
-		if($this->category_model->get_cat_by('cat_name', $cat_name, $cat_id) != NULL)
+		if($this->category_model->get_by('cat_name', $cat_name, $cat_id) != NULL)
 		{
 			$this->form_validation->set_message('check_cat_name', 'The {field} field contain a value in used.');
 			return FALSE;
@@ -183,7 +183,7 @@ class Category extends  CI_Controller
 
 	public function edit($cat_id = '')
 	{
-		$cat = $this->category_model->get_cat_by('cat_id', $cat_id);
+		$cat = $this->category_model->get_by('cat_id', $cat_id);
 		if(empty($cat))
 		{
 			redirect(base_url().'tpl/category');
@@ -221,8 +221,7 @@ class Category extends  CI_Controller
 						return;
 					}
 				}
-				$this->category_model->set_id($cat_id);
-				$this->category_model->update($update);
+				$this->category_model->update($cat_id, $update);
 				$this->session->set_flashdata('msg', "Updated category $cat[cat_name] successfully.");
 				redirect(base_url().'tpl/category');
 			}
@@ -237,10 +236,10 @@ class Category extends  CI_Controller
 
 	public function preview($cat_id = '')
 	{
-		if(($cat = $this->category_model->get_cat_by('cat_id', $cat_id)) != NULL)
+		if(($cat = $this->category_model->get_by('cat_id', $cat_id)) != NULL)
 		{
 			$this->smarty->assign('cat', $cat);
-			if(($cat_parent = $this->category_model->get_cat_by('cat_id', $cat['cat_parent_id'])) != NULL)
+			if(($cat_parent = $this->category_model->get_by('cat_id', $cat['cat_parent_id'])) != NULL)
 			{
 				$this->smarty->assign('cat_parent', $cat_parent);
 			}

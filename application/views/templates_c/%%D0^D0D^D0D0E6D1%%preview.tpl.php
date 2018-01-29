@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-29 10:40:02
+<?php /* Smarty version 2.6.31, created on 2018-01-29 12:14:26
          compiled from article/preview.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'article/preview.tpl', 42, false),)), $this); ?>
@@ -34,7 +34,7 @@ unset($_smarty_tpl_vars);
 						<div class="title"><h2><?php echo $this->_tpl_vars['article']['article_name']; ?>
 </h2></div>
 						<div class="category">Category: <a href="<?php echo $this->_tpl_vars['base_url']; ?>
-index.php/tpl/category/<?php echo $this->_tpl_vars['article']['cat_id']; ?>
+tpl/category/<?php echo $this->_tpl_vars['article']['cat_id']; ?>
 "><?php echo $this->_tpl_vars['article']['cat_name']; ?>
 </a></div>
 						<div class="date">Created|Modified: <?php echo $this->_tpl_vars['article']['article_created_date']; ?>
@@ -44,7 +44,7 @@ index.php/tpl/category/<?php echo $this->_tpl_vars['article']['cat_id']; ?>
 </b></div>
 						<div class="image">
 							<img src="<?php echo $this->_tpl_vars['base_url']; ?>
-uploads/<?php echo $this->_tpl_vars['article']['article_thumbnail']; ?>
+uploads/articles/<?php echo $this->_tpl_vars['article']['article_thumbnail']; ?>
 " height="250" alt="Article Image">
 						</div>
 						<div class="content"><?php echo $this->_tpl_vars['article']['article_content']; ?>
