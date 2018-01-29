@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 04:15:35
+<?php /* Smarty version 2.6.31, created on 2018-01-29 08:06:48
          compiled from article/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_table', 'article/index.tpl', 28, false),)), $this); ?>
@@ -42,7 +42,7 @@ unset($_smarty_tpl_vars);
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<?php echo smarty_function_html_table(array('cols' => "ID,Title,Category,Des,Edit,Delete",'table_attr' => $this->_tpl_vars['table_attr'],'loop' => $this->_tpl_vars['articles']), $this);?>
+							<?php echo smarty_function_html_table(array('cols' => "ID,Title,Category,Des,Status,Created,Modified,Edit,Delete",'table_attr' => $this->_tpl_vars['table_attr'],'td_attr' => $this->_tpl_vars['td_attr'],'loop' => $this->_tpl_vars['articles']), $this);?>
 
 						</div>
 					</div>

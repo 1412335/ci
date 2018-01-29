@@ -15,20 +15,20 @@ class Category extends  CI_Controller
 		1	=> 'public'
 	);
 
-	public $config = array(
-		'max_size'	=> '100',
-		'max_width'	=> '1024',
-		'max_height'	=> '1024',
-		'allowed_types'	=> 'png|jpg|jpeg',
-		'upload_path'	=> './uploads/categories/'
-	);
-
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('category_model');
 		$this->load->library('form_validation');
-		$this->load->library('upload', $this->config);
+
+		$config = array(
+			'max_size'	=> '100',
+			'max_width'	=> '1024',
+			'max_height'	=> '1024',
+			'allowed_types'	=> 'png|jpg|jpeg',
+			'upload_path'	=> './uploads/categories/',
+		);
+		$this->load->library('upload', $config);
 
 		$this->smarty->assign('base_url', base_url());
 
@@ -85,7 +85,8 @@ class Category extends  CI_Controller
 							<td>$item[cat_modified_date]</td>
 							<td></td>
 							<td><a role='button' href=".base_url()."tpl/category/$item[cat_id]/edit class='btn btn-primary btn-flat btn-sm'><i class='fa fa-edit'></i></a></td>
-							<td><a role='button' href=".base_url()."tpl/category/$item[cat_id]/delete class='btn btn-danger btn-flat btn-sm'><i class='fa fa-remove'></i></a></td>
+							<td><a role='button' href=".base_url()."tpl/category/$item[cat_id]/delete  
+								onclick='return confirm(\"Are you want to delete this cat?\");' class='btn btn-danger btn-flat btn-sm'><i class='fa fa-remove'></i></a></td>
 						</tr>";
 				$str .= '|---';
 				$html .= $this->show_cats($cats, $item['cat_id'], $str, $i);

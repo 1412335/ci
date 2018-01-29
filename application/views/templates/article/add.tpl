@@ -14,7 +14,7 @@
 				</div>
 				<div class="box-body">
 					<div class="col-md-12">
-						<form action={$base_url}index.php/tpl/article/add method="post" enctype="multipart/form-data" role="form">
+						<form action={$base_url}tpl/article/add method="post" enctype="multipart/form-data" role="form">
 							{if $errors}
 								<div class='alert alert-danger'>
 									<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
@@ -31,6 +31,16 @@
 									<option value=''>-- Select category --</option>
 									{html_options options=$cats}
 								</select>
+							</div>
+							<div class="form-group">
+								<label for="article_status">Status</label>
+								<select name="article_status" id="article_status" class="form-control select2" style="width: 100%;">
+									{html_options options=$status}
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="article_tags">Article Tags</label>
+								<input type="text" class="form-control" name="article_tags" id="article_tags" placeholder="Enter Some Tags For Article">
 							</div>
 							<div class="form-group">
 								<label for="article_image">Image</label>

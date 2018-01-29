@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 03:22:17
+<?php /* Smarty version 2.6.31, created on 2018-01-29 10:25:49
          compiled from article/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'article/edit.tpl', 36, false),)), $this); ?>
@@ -30,10 +30,10 @@ unset($_smarty_tpl_vars);
 					</div>
 				</div>
 				<div class="box-body">
-					<div class="col-md-8 col-md-offset-2">
+					<div class="col-md-12">
 						<form action=<?php echo $this->_tpl_vars['base_url']; ?>
-index.php/tpl/article/edit/<?php echo $this->_tpl_vars['article']['article_id']; ?>
- method="post" enctype="multipart/form-data" role="form">
+tpl/article/<?php echo $this->_tpl_vars['article']['article_id']; ?>
+/edit method="post" enctype="multipart/form-data" role="form">
 							<?php if ($this->_tpl_vars['errors']): ?>
 								<div class='alert alert-danger'>
 									<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
@@ -60,9 +60,21 @@ index.php/tpl/article/edit/<?php echo $this->_tpl_vars['article']['article_id'];
 								</select>
 							</div>
 							<div class="form-group">
+								<label for="article_status">Status</label>
+								<select name="article_status" id="article_status" class="form-control select2" style="width: 100%;">
+									<?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['status'],'selected' => $this->_tpl_vars['article']['article_status']), $this);?>
+
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="article_tags">Article Tags</label>
+								<input type="text" class="form-control" name="article_tags" id="article_tags" value="<?php echo $this->_tpl_vars['article']['article_tags']; ?>
+" placeholder="Enter Some Tags For Article">
+							</div>
+							<div class="form-group">
 								<label for="article_image">Image</label>
-								<img id="article_preview_img" src="<?php echo $this->_tpl_vars['base_url']; ?>
-uploads/<?php echo $this->_tpl_vars['article']['article_thumbnail']; ?>
+								<img class="preview-img" id="article_preview_img" src="<?php echo $this->_tpl_vars['base_url']; ?>
+uploads/articles/<?php echo $this->_tpl_vars['article']['article_thumbnail']; ?>
 " width="180" height="100" alt="Article Image">
 								<input type="file" class="hidden" id="article_image" name="article_image">
 							</div>

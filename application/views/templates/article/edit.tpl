@@ -14,7 +14,7 @@
 				</div>
 				<div class="box-body">
 					<div class="col-md-12">
-						<form action={$base_url}index.php/tpl/article/edit/{$article.article_id} method="post" enctype="multipart/form-data" role="form">
+						<form action={$base_url}tpl/article/{$article.article_id}/edit method="post" enctype="multipart/form-data" role="form">
 							{if $errors}
 								<div class='alert alert-danger'>
 									<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
@@ -37,8 +37,18 @@
 								</select>
 							</div>
 							<div class="form-group">
+								<label for="article_status">Status</label>
+								<select name="article_status" id="article_status" class="form-control select2" style="width: 100%;">
+									{html_options options=$status selected=$article.article_status}
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="article_tags">Article Tags</label>
+								<input type="text" class="form-control" name="article_tags" id="article_tags" value="{$article.article_tags}" placeholder="Enter Some Tags For Article">
+							</div>
+							<div class="form-group">
 								<label for="article_image">Image</label>
-								<img class="preview-img" id="article_preview_img" src="{$base_url}uploads/{$article.article_thumbnail}" width="180" height="100" alt="Article Image">
+								<img class="preview-img" id="article_preview_img" src="{$base_url}uploads/articles/{$article.article_thumbnail}" height="250" alt="Article Image">
 								<input type="file" class="hidden" id="article_image" name="article_image">
 							</div>
 							<div class="form-group">

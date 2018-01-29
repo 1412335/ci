@@ -16,7 +16,7 @@
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="col-md-12">
-						<form action={$base_url}tpl/category/edit/{$cat.cat_id} method="post" role="form">
+						<form action={$base_url}tpl/category/edit/{$cat.cat_id} method="post" enctype="multipart/form-data" role="form">
 							{if $errors}
 								<div class='alert alert-danger alert-dismissable'>
 									<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
@@ -25,7 +25,7 @@
 							{/if}
 							<div class="form-group">
 								<label for="cat_id">Category ID</label>
-								<input type="text" class="form-control" name="cat_id" value="{$cat.cat_id}" id="cat_id" placeholder="Enter Category Name">
+								<input type="text" class="form-control" name="cat_id" value="{$cat.cat_id}" id="cat_id" disabled>
 							</div>
 							<div class="form-group">
 								<label for="cat_name">Category Name</label>

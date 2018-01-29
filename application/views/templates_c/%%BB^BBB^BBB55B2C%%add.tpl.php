@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-29 07:00:51
+<?php /* Smarty version 2.6.31, created on 2018-01-29 07:07:41
          compiled from cat/add.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'cat/add.tpl', 34, false),)), $this); ?>
@@ -33,7 +33,7 @@ unset($_smarty_tpl_vars);
 				<div class="box-body">
 					<div class="col-md-12">
 						<form action=<?php echo $this->_tpl_vars['base_url']; ?>
-tpl/category/add method="post" role="form">
+tpl/category/add method="post" enctype="multipart/form-data" role="form">
 							<?php if ($this->_tpl_vars['errors']): ?>
 								<div class='alert alert-danger alert-dismissable'>
 									<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>

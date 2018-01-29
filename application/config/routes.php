@@ -57,6 +57,7 @@ $route['tpl/category/(:num)/edit'] = 'tpl/category/edit/$1';
 $route['tpl/category/(:num)/delete'] = 'tpl/category/delete/$1';
 $route['tpl/category/(:num)'] = 'tpl/category/preview/$1';
 
-//$route['tpl/article/(:num)/edit'] = 'tpl/article/edit/$1';
-//$route['tpl/article/(:num)/delete'] = 'tpl/article/delete/$1';
+$route['tpl/article/(:num)/edit'] = 'tpl/article/edit/$1';
+$route['tpl/article/(:num)/delete'] = 'tpl/article/delete/$1';
+$route['tpl/article/(:num)/related'] = 'tpl/article/related/$1';
 $route['tpl/article/(:num)'] = 'tpl/article/preview/$1';

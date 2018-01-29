@@ -16,7 +16,7 @@
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="col-md-12">
-						<form action={$base_url}tpl/category/add method="post" role="form">
+						<form action={$base_url}tpl/category/add method="post" enctype="multipart/form-data" role="form">
 							{if $errors}
 								<div class='alert alert-danger alert-dismissable'>
 									<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 06:53:55
+<?php /* Smarty version 2.6.31, created on 2018-01-29 07:23:40
          compiled from cat/preview.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'cat/preview.tpl', 25, false),array('function', 'html_table', 'cat/preview.tpl', 39, false),)), $this); ?>
@@ -59,7 +59,7 @@ index.php/tpl/category/<?php echo $this->_tpl_vars['cat']['cat_parent_id']; ?>
 					<hr>
 					<div class="row">
 						<div class="col-md-12">
-							<?php echo smarty_function_html_table(array('cols' => "ID,Title,Des,Edit,Delete",'table_attr' => $this->_tpl_vars['table_attr'],'loop' => $this->_tpl_vars['articles']), $this);?>
+							<?php echo smarty_function_html_table(array('cols' => "ID,Title,Des,Edit,Delete",'table_attr' => $this->_tpl_vars['table_attr'],'td_attr' => $this->_tpl_vars['td_attr'],'loop' => $this->_tpl_vars['articles']), $this);?>
 
 						</div>
 					</div>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-26 07:41:36
+<?php /* Smarty version 2.6.31, created on 2018-01-29 08:11:40
          compiled from article/add.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'article/add.tpl', 32, false),)), $this); ?>
@@ -50,6 +50,17 @@ index.php/tpl/article/add method="post" enctype="multipart/form-data" role="form
 									<?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['cats']), $this);?>
 
 								</select>
+							</div>
+							<div class="form-group">
+								<label for="article_status">Status</label>
+								<select name="article_status" id="article_status" class="form-control select2" style="width: 100%;">
+									<?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['status']), $this);?>
+
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="article_tags">Article Tags</label>
+								<input type="text" class="form-control" name="article_tags" id="article_tags" placeholder="Enter Some Tags For Article">
 							</div>
 							<div class="form-group">
 								<label for="article_image">Image</label>

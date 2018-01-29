@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-29 06:55:47
+<?php /* Smarty version 2.6.31, created on 2018-01-29 07:23:47
          compiled from cat/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'cat/edit.tpl', 38, false),)), $this); ?>
@@ -35,7 +35,7 @@ unset($_smarty_tpl_vars);
 					<div class="col-md-12">
 						<form action=<?php echo $this->_tpl_vars['base_url']; ?>
 tpl/category/edit/<?php echo $this->_tpl_vars['cat']['cat_id']; ?>
- method="post" role="form">
+ method="post" enctype="multipart/form-data" role="form">
 							<?php if ($this->_tpl_vars['errors']): ?>
 								<div class='alert alert-danger alert-dismissable'>
 									<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
@@ -80,7 +80,7 @@ uploads/categories/<?php echo $this->_tpl_vars['cat']['cat_thumbnail']; ?>
 								<textarea id="cat_des" name="cat_des" rows="10" cols="80"><?php echo $this->_tpl_vars['cat']['cat_des']; ?>
 </textarea>
 							</div>
-							<button type="submit" class="btn btn-primary" name="edit">Save</button>
+							<button type="submit" class="btn btn-primary btn-flat" name="edit">Save</button>
 						</form>
 					</div>
 				</div>
