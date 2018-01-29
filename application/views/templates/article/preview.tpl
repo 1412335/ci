@@ -31,7 +31,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-12">
-			<h3>Related Articles</h3>
+			<h3>Related Articles By Tags</h3>
 			<hr>
 		</div>
 		{foreach from=$related_articles item=item}
@@ -48,6 +48,27 @@
 				</div>
 			</div>
 		</div>
+		{/foreach}
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Articles OF Category: {$article.cat_name}</h3>
+			<hr>
+		</div>
+		{foreach from=$related_cat_articles item=item}
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="{$base_url}uploads/articles/{$item.article_thumbnail}" height="150" alt="Article Image">
+					<div class="caption">
+						<h3>{$item.article_name|capitalize}</h3>
+						<p>{$item.article_des}</p>
+						<p class="clearfix">
+							<a href="{$base_url}tpl/article/{$item.article_id}" class="pull-left">View</a>
+							<a href="{$base_url}tpl/article/{$item.article_id}/edit" class="pull-right">Edit</a>
+						</p>
+					</div>
+				</div>
+			</div>
 		{/foreach}
 	</div>
 </section>

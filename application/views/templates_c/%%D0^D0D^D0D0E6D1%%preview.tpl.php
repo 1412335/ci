@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-29 10:20:46
+<?php /* Smarty version 2.6.31, created on 2018-01-29 10:40:02
          compiled from article/preview.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'article/preview.tpl', 41, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'article/preview.tpl', 42, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "./partials/head.tpl", 'smarty_include_vars' => array('title' => 'Preview Article')));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -56,10 +56,11 @@ uploads/<?php echo $this->_tpl_vars['article']['article_thumbnail']; ?>
 			</div>
 		</div>
 	</div>
-	<hr>
+	<br>
 	<div class="row">
 		<div class="col-md-12">
-			<h3>Related Articles</h3>
+			<h3>Related Articles By Tags</h3>
+			<hr>
 		</div>
 		<?php $_from = $this->_tpl_vars['related_articles']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['item']):
@@ -85,6 +86,38 @@ tpl/article/<?php echo $this->_tpl_vars['item']['article_id']; ?>
 				</div>
 			</div>
 		</div>
+		<?php endforeach; endif; unset($_from); ?>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Articles OF Category: <?php echo $this->_tpl_vars['article']['cat_name']; ?>
+</h3>
+			<hr>
+		</div>
+		<?php $_from = $this->_tpl_vars['related_cat_articles']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['item']):
+?>
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img src="<?php echo $this->_tpl_vars['base_url']; ?>
+uploads/articles/<?php echo $this->_tpl_vars['item']['article_thumbnail']; ?>
+" height="150" alt="Article Image">
+					<div class="caption">
+						<h3><?php echo ((is_array($_tmp=$this->_tpl_vars['item']['article_name'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+</h3>
+						<p><?php echo $this->_tpl_vars['item']['article_des']; ?>
+</p>
+						<p class="clearfix">
+							<a href="<?php echo $this->_tpl_vars['base_url']; ?>
+tpl/article/<?php echo $this->_tpl_vars['item']['article_id']; ?>
+" class="pull-left">View</a>
+							<a href="<?php echo $this->_tpl_vars['base_url']; ?>
+tpl/article/<?php echo $this->_tpl_vars['item']['article_id']; ?>
+/edit" class="pull-right">Edit</a>
+						</p>
+					</div>
+				</div>
+			</div>
 		<?php endforeach; endif; unset($_from); ?>
 	</div>
 </section>

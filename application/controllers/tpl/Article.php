@@ -183,6 +183,10 @@ class Article extends CI_Controller
 		{
 			$related_articles = $this->article_model->get_related_to($article_id, 4, 'tags');
 			$this->smarty->assign('related_articles', $related_articles);
+
+			$related_cat_articles = $this->article_model->get_related_to($article_id, 4);
+			$this->smarty->assign('related_cat_articles', $related_cat_articles);
+
 			$this->smarty->assign('article', $article);
 			$this->smarty->view('article/preview.tpl');
 		}

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-29 10:25:49
+<?php /* Smarty version 2.6.31, created on 2018-01-29 10:39:38
          compiled from article/edit.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'article/edit.tpl', 36, false),)), $this); ?>
@@ -75,7 +75,7 @@ tpl/article/<?php echo $this->_tpl_vars['article']['article_id']; ?>
 								<label for="article_image">Image</label>
 								<img class="preview-img" id="article_preview_img" src="<?php echo $this->_tpl_vars['base_url']; ?>
 uploads/articles/<?php echo $this->_tpl_vars['article']['article_thumbnail']; ?>
-" width="180" height="100" alt="Article Image">
+" height="250" alt="Article Image">
 								<input type="file" class="hidden" id="article_image" name="article_image">
 							</div>
 							<div class="form-group">
