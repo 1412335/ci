@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.31, created on 2018-01-30 03:31:10
+<?php /* Smarty version 2.6.31, created on 2018-01-30 05:13:25
          compiled from login/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "./partials/head.tpl", 'smarty_include_vars' => array('title' => 'Login')));
@@ -62,7 +62,8 @@ tpl/category"><b>Admin</b>management</a>
 			<!-- /.social-auth-links -->
 
 			<a href="#">I forgot my password</a><br>
-			<a href="" class="text-center">Register a new membership</a>
+			<a href="<?php echo $this->_tpl_vars['base_url']; ?>
+tpl/admin/register" class="text-center">Register a new membership</a>
 
 		</div>
 		<!-- /.login-box-body -->

@@ -33,9 +33,10 @@ class My_Model extends CI_Model
 		return $this->db->get($this->table)->result_array();
 	}
 
-	public function get_by($key, $value, $id = NULL)
+	public function get_by($where, $id = NULL)
 	{
-		$this->db->where($key, $value);
+		$this->db->select($this->select);
+		$this->db->where($where);
 		if($id)
 		{
 			$this->db->where($this->prefix_table.'_id != ', $id);

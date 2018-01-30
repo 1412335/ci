@@ -29,11 +29,12 @@ class Login extends My_Controller
 		}
 		else
 		{
-			if($this->user_model->check_login($this->input->post('email'), $this->input->post('password')))
+			if(($return = $this->user_model->login($this->input->post('email'), $this->input->post('password'))) != NULL)
 			{
 				$this->session->set_flashdata('msg', 'Login successfully.');
 				// set access token
-				redirect(admin_url().'category');
+				$this->session->set_userdata('user', $return);
+				redirect(admin_home_url());
 			}
 			else
 			{
@@ -42,7 +43,6 @@ class Login extends My_Controller
 			}
 		}
 	}
-
 
 
 }

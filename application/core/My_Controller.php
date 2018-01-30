@@ -21,12 +21,12 @@ class My_Controller extends CI_Controller
 				$controller = strtolower($this->uri->segment(3));
 				if($this->_is_authenticated())
 				{
-					if($controller == 'login')
+					if($controller == 'login' || $controller == 'register')
 					{
 						redirect(admin_home_url());
 					}
 				}
-				else if($controller != 'login')
+				else if($controller != 'login' && $controller != 'register')
 				{
 					redirect(admin_url('login'));
 				}
