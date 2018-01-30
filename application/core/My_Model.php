@@ -58,4 +58,14 @@ class My_Model extends CI_Model
 		return $this->db->update($this->table, array($this->prefix_table.'_status' => 0), array($this->key => $id));
 	}
 
+	public function check_exist($where)
+	{
+		$this->db->where($where);
+		if($this->db->get($this->table)->num_rows() > 0)
+		{
+			return TRUE;
+		}
+		return FALSE;
+	}
+
 }
