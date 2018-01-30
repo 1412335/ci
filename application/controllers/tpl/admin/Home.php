@@ -6,7 +6,7 @@
  * Time: 8:19 AM
  */
 
-class Home extends CI_Controller
+class Home extends My_Controller
 {
 	public function __construct()
 	{

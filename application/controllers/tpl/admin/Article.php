@@ -6,7 +6,7 @@
  * Time: 11:43 AM
  */
 
-class Article extends CI_Controller
+class Article extends My_Controller
 {
 	protected $status = array(
 		0	=> 'unpublic',
@@ -104,7 +104,7 @@ class Article extends CI_Controller
 				);
 				$this->article_model->insert($new_article);
 				$this->session->set_flashdata('msg', 'Added new article successfully.');
-				redirect(base_url() . 'tpl/article');
+				redirect(admin_url('article'));
 			}
 		}
 	}
@@ -114,7 +114,7 @@ class Article extends CI_Controller
 		$article = $this->article_model->get_article_by_id($article_id);
 		if(empty($article))
 		{
-			redirect(base_url() . 'tpl/article');
+			redirect(admin_url('article'));
 		}
 		else
 		{
@@ -159,7 +159,7 @@ class Article extends CI_Controller
 				}
 				$this->article_model->update($article_id, $update);
 				$this->session->set_flashdata('msg', "Updated article successfully.");
-				redirect(base_url() . 'tpl/article');
+				redirect(admin_url('article'));
 			}
 		}
 	}
@@ -168,7 +168,7 @@ class Article extends CI_Controller
 	{
 		$this->article_model->delete($article_id);
 		$this->session->set_flashdata('msg', "Deleted article successfully.");
-		redirect(base_url() . 'tpl/article');
+		redirect(admin_url('article'));
 	}
 
 	public function preview($article_id = '')
@@ -176,7 +176,7 @@ class Article extends CI_Controller
 		$article = $this->article_model->get_article_by_id($article_id);
 		if( ! $article)
 		{
-			redirect(base_url().'tpl/article');
+			redirect(admin_url('article'));
 		}
 		else
 		{

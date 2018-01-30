@@ -33,7 +33,7 @@ class Login extends My_Controller
 			{
 				$this->session->set_flashdata('msg', 'Login successfully.');
 				// set access token
-				redirect('tpl/category');
+				redirect(admin_url().'category');
 			}
 			else
 			{

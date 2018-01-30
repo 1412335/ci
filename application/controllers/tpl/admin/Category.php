@@ -6,7 +6,7 @@
  * Time: 5:49 PM
  */
 
-class Category extends  CI_Controller
+class Category extends  My_Controller
 {
 	protected $cats;
 
@@ -161,7 +161,7 @@ class Category extends  CI_Controller
 				);
 				$this->category_model->insert($new_cat);
 				$this->session->set_flashdata('msg', 'Added new category successfully.');
-				redirect(base_url().'tpl/category');
+				redirect(admin_url().'category');
 			}
 			else
 			{
@@ -186,7 +186,7 @@ class Category extends  CI_Controller
 		$cat = $this->category_model->get_by('cat_id', $cat_id);
 		if(empty($cat))
 		{
-			redirect(base_url().'tpl/category');
+			redirect(admin_url('category'));
 		}
 		else
 		{
@@ -223,7 +223,7 @@ class Category extends  CI_Controller
 				}
 				$this->category_model->update($cat_id, $update);
 				$this->session->set_flashdata('msg', "Updated category $cat[cat_name] successfully.");
-				redirect(base_url().'tpl/category');
+				redirect(admin_url('category'));
 			}
 		}
 	}
@@ -232,7 +232,8 @@ class Category extends  CI_Controller
 	{
 		$this->category_model->delete($cat_id);
 		$this->session->set_flashdata('msg', "Deleted category successfully.");
-		redirect(base_url().'tpl/category');}
+		redirect(admin_url('category'));
+	}
 
 	public function preview($cat_id = '')
 	{
@@ -262,7 +263,7 @@ class Category extends  CI_Controller
 		}
 		else
 		{
-			redirect(base_url().'tpl/category');
+			redirect(admin_home_url());
 		}
 	}
 
